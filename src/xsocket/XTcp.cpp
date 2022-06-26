@@ -10,6 +10,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 #define closesocket close
 #endif
 
@@ -61,7 +62,7 @@ int XTcp::Recv(char* buf, int bufsize)
 int XTcp::Send(const char* buf, int size)
 {
 	int s = 0;
-	while(s != size)
+	while (s != size)
 	{
 		int len = send(sock, buf + s, size - s, 0);
 		if (len <= 0)break;
@@ -93,6 +94,64 @@ XTcp XTcp::Accept()
 	printf("client ip is %s, port is %d\n", tcp.ip, tcp.port);
 	return tcp;
 }
+
+bool XTcp::Connect(const char* ip, unsigned short port, int timeoutms)
+{
+	if (sock <= 0) CreateSocket();
+	sockaddr_in saddr{};
+	saddr.sin_family = AF_INET;
+	saddr.sin_port = htons(port);
+	saddr.sin_addr.s_addr = inet_addr(ip);
+	SetBlock(false);
+	fd_set set;
+	if (connect(sock, (sockaddr*)&saddr, sizeof(saddr)) != 0)
+	{
+		FD_ZERO(&set);
+		FD_SET(sock, &set);
+		timeval tm;
+		tm.tv_sec = 0;
+		tm.tv_usec = timeoutms * 1000;
+		if (select(sock + 1, 0, &set, 0, &tm) <= 0)
+		{
+			printf("connect timeout or error!\n");
+#if WIN32
+		printf("connect %s:%d failed!\n", ip, port /*, strerror(errno) */);
+#else
+		printf("connect %s:%d failed!:%s\n", ip, port, strerror(errno));
+#endif
+			return false;
+		}
+		return true;
+	}
+	SetBlock(true);
+	printf("connect %s:%d success!\n", ip, port);
+	return true;
+}
 XTcp::~XTcp()
 {
+}
+
+bool XTcp::SetBlock(bool isblock)
+{
+	if (sock <= 0) return false;
+#ifdef WIN32
+	unsigned long ul = 0;
+	if (!isblock) ul = 1;
+	ioctlsocket(sock, FIONBIO, &ul);
+#else
+	int flags = fcntl(sock, F_GETFL, 0);
+	if (flags < 0)
+		return false;
+	if (isblock)
+	{
+		flags = flags & ~O_NONBLOCK;
+	}
+	else
+	{
+		flags = flags | O_NONBLOCK;
+	}
+	if (fcntl(sock, F_SETFL, flags) != 0)
+		return false;
+#endif
+	return true;
 }

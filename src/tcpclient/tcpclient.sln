@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tcpclient", "\172.30.138.119\code\src\tcpclient\tcpclient.vcxproj", "{B54F8733-AA9A-49AC-8BFB-8ED9ACF5EA05}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tcpclient", ".\tcpclient.vcxproj", "{B54F8733-AA9A-49AC-8BFB-8ED9ACF5EA05}"
 	ProjectSection(ProjectDependencies) = postProject
 		{05209AA5-D4D2-47F8-A75A-4085E407D031} = {05209AA5-D4D2-47F8-A75A-4085E407D031}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xsocket", "\172.30.138.119\code\src\xsocket\xsocket.vcxproj", "{05209AA5-D4D2-47F8-A75A-4085E407D031}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xsocket", "..\xsocket\xsocket.vcxproj", "{05209AA5-D4D2-47F8-A75A-4085E407D031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
