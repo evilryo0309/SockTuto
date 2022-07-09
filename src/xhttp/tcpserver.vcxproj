@@ -140,6 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="server.cpp" />
+    <ClCompile Include="XHttpClient.cpp" />
+    <ClCompile Include="XHttpResponse.cpp" />
+    <ClCompile Include="XHttpServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XHttpClient.h" />
+    <ClInclude Include="XHttpResponse.h" />
+    <ClInclude Include="XHttpServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

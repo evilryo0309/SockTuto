@@ -18,5 +18,25 @@
     <ClCompile Include="server.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="XHttpServer.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="XHttpClient.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="XHttpResponse.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XHttpServer.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="XHttpClient.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="XHttpResponse.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
