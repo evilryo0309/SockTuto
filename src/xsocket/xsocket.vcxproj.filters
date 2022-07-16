@@ -30,6 +30,9 @@
     <ClInclude Include="XTcp.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="XUdp.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="xsocket.cpp">
@@ -42,6 +45,9 @@
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="XTcp.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="XUdp.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>

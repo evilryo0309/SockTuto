@@ -74,6 +74,7 @@ void XTcp::Close()
 {
 	if (sock <= 0) return;
 	closesocket(sock);
+	sock = 0;
 }
 XTcp XTcp::Accept()
 {
